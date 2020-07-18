@@ -20,11 +20,13 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         button_switch.setOnClickListener {
-            if (isNightModeOn) {
+            if (isNightModeOn)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 sharedPrefEdit.putBoolean("NightMode", false)
-            } else
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPrefEdit.apply()
+            sharedPrefEdit.putBoolean("NightMode",true)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefEdit.apply()
         }
     }
 }
